@@ -1,0 +1,557 @@
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-fondo: #F7F6F2;
+  --color-texto: #17233D;
+  --color-secundario: #667085;
+  --color-acento: #1D4F91;
+  --color-borde: #CBD5E1;
+  --color-tarjeta: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Inter", sans-serif;;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+main > section {
+  border-top: 1px solid var(--color-borde);
+}
+
+.menu-boton {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid var(--color-borde);
+  background-color: var(--color-tarjeta);
+  color: var(--color-texto);
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+  z-index: 50;
+}
+
+.menu-lateral {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 320px;
+  max-width: 80vw;
+  height: 100vh;
+
+  padding: 40px 32px;
+
+  background-color: var(--color-tarjeta);
+  border-right: 1px solid var(--color-borde);
+
+  z-index: 200;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.menu-lateral.abierto {
+  transform: translateX(0);
+}
+
+.menu-etiqueta {
+  margin: 32px 0 40px;
+
+  color: var(--color-acento);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lateral a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--color-borde);
+
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+.menu-lateral a span {
+  color: var(--color-acento);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.menu-lateral a:hover {
+  color: var(--color-acento);
+}
+
+.menu-cerrar {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+
+  border: none;
+  background: none;
+
+  color: var(--color-secundario);
+
+  font-size: 1.8rem;
+
+  cursor: pointer;
+}
+
+.menu-cerrar:hover {
+  color: var(--color-acento);
+}
+
+header {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 0 20px;
+}
+
+header h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0 0 24px;
+}
+
+header p {
+  margin: 4px 0;
+  color: var(--color-secundario);
+}
+
+header p:first-of-type {
+  color: var(--color-acento);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+h2 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: var(--color-acento);
+  margin-top: 12px;
+}
+
+h2 + p {
+  color: var(--color-secundario);
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 760px;
+  margin: 40px auto 0;
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: 4px;
+  background-color: var(--color-tarjeta);
+}
+
+.carousel-slide {
+  display: none;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  animation: fadeIn 0.5s ease;
+  -webkit-animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-slide:first-of-type {
+  display: block;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.foto-arriba {
+  object-position: center 40%;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-acento);
+
+  font-size: 1.3rem;
+  cursor: pointer;
+
+  z-index: 2;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: var(--color-acento);
+  color: white;
+}
+
+.prev {
+  left: 16px;
+}
+
+.next {
+  right: 16px;
+}
+
+.carousel-counter {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+
+  margin: 0;
+  padding: 5px 10px;
+
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-texto);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+
+  z-index: 2;
+}
+
+.archivo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.archivo-item {
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+}
+
+.archivo-preview {
+  padding: 24px;
+}
+
+.archivo-preview img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+
+  margin: 20px 0;
+}
+
+.archivo-numero {
+  margin: 0;
+
+  color: var(--color-acento);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.archivo-fecha {
+  margin: 4px 0 0;
+
+  color: var(--color-secundario);
+
+  font-size: 0.8rem;
+}
+
+.archivo-item h3 {
+  margin: 20px 0 16px;
+
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.archivo-abrir {
+  padding: 0 0 4px;
+
+  border: none;
+  border-bottom: 1px solid var(--color-acento);
+
+  background: none;
+  color: var(--color-acento);
+
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+}
+
+.archivo-abrir:hover {
+  color: var(--color-texto);
+  border-color: var(--color-texto);
+}
+
+.archivo-contenido {
+  display: none;
+}
+
+.modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(23, 35, 61, 0.75);
+
+  z-index: 100;
+
+  padding: 40px 20px;
+
+  overflow-y: auto;
+}
+
+.modal-documento {
+  position: relative;
+
+  max-width: 760px;
+  margin: 0 auto;
+
+  padding: 48px;
+
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+
+  border: none;
+  background: none;
+
+  color: var(--color-secundario);
+
+  font-size: 2rem;
+  font-weight: 300;
+
+  cursor: pointer;
+}
+
+.modal-cerrar:hover {
+  color: var(--color-acento);
+}
+
+#modalContenido img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  margin: 24px 0;
+}
+
+#modalContenido {
+  color: var(--color-texto);
+}
+
+#modalContenido p {
+  max-width: 65ch;
+  margin: 0 auto 1em;
+}
+
+#carta-mes-1 {
+  max-width: 800px;
+}
+
+.carta-etiqueta {
+  margin: 0 0 8px;
+
+  color: var(--color-acento);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.carta {
+  margin-top: 48px;
+  padding: 48px;
+
+  background-color: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+}
+
+.carta p {
+  max-width: 60ch;
+  margin: 0 auto 1.5em;
+}
+
+.carta p:first-child {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+}
+
+.carta-firma {
+  margin-top: 40px !important;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px 40px;
+
+  border-top: 1px solid var(--color-borde);
+
+  text-align: center;
+  color: var(--color-secundario);
+}
+
+.footer-titulo {
+  margin: 0 0 20px;
+
+  color: var(--color-acento);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+footer p {
+  margin: 4px 0;
+}
+
+.footer-fecha {
+  font-size: 0.8rem;
+}
+
+.footer-cierre {
+  margin-top: 32px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.5rem;
+  font-style: italic;
+
+  color: var(--color-texto);
+}
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  h2 {
+    font-size: 2.3rem;
+  }
+
+  .carousel-container {
+    margin-top: 32px;
+    }
+
+    .carousel-slide {
+    aspect-ratio: 3 / 4;
+    }
+
+    .carousel-btn {
+    width: 38px;
+    height: 38px;
+    }
+
+    .prev {
+    left: 10px;
+    }
+
+    .next {
+    right: 10px;
+    }
+
+    .archivo-grid {
+    grid-template-columns: 1fr;
+    }
+
+    .carta {
+    padding: 32px 24px;
+    }
+
+}
